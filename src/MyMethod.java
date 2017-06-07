@@ -19,7 +19,6 @@ public class MyMethod {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		echo("end the waitting time");
 	}
 	//以中心点滑动
     public void my_swipe(int direction,double range){
