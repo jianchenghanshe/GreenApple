@@ -1,12 +1,12 @@
 import java.io.File;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import junit.framework.TestCase;
 
 public class Connect {
 	//屏幕的宽高
@@ -43,8 +43,8 @@ public class Connect {
         //获得屏幕的宽高
         height = driver.manage().window().getSize().height;
         width = driver.manage().window().getSize().width;
-
-
+        System.out.println("启动程序，等待12s");
+        Thread.sleep(12000);
     }
     
     //提供driver返回函数
@@ -62,6 +62,12 @@ public class Connect {
     public static void main(String[] args){
     	try {
 			Connect con = new Connect();
+			TestCases tc = new TestCases(con);
+			
+//			tc.count_redbag();
+			while(true){
+				tc.get_read_praise();
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
