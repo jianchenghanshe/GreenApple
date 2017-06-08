@@ -96,7 +96,12 @@ public class TestCases {
 				mm.echo("找到‘点我下载’按钮，点击进行下载");
 				mm.my_click(xpath);
 				mm.slp(5);
-
+			}
+			xpath = "//android.widget.TextView[@text='安装']";
+			if(mm.is_exist(xpath)){
+				mm.echo("找到‘安装’按钮，点击进行下载");
+				mm.my_click(xpath);
+				mm.slp(5);
 			}
 			
 			String cmd = "adb shell input keyevent 4";

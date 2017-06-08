@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.openqa.selenium.WebElement;
 
@@ -6,6 +8,8 @@ import io.appium.java_client.AppiumDriver;
 
 public class MyMethod {
 	
+	
+	SimpleDateFormat df = new SimpleDateFormat("yy-MM-dd HH:mm:ss");//设置日期格式
 	private Connect con;
 	private AppiumDriver driver;
 	private int width,height;
@@ -18,7 +22,7 @@ public class MyMethod {
 	//打印信息
 	public void echo(String msg){
 
-		System.out.println(msg);
+		System.out.println(df.format(new Date())+":"+msg);// new Date()为获取当前系统时间
 
 	}
 	//等待函数

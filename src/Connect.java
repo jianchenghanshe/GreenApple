@@ -1,6 +1,7 @@
 import java.io.File;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -13,7 +14,7 @@ public class Connect {
 	private int width;
 	private int height;
     private AppiumDriver driver;
-  
+   
 
 
     public Connect()throws Exception {  
@@ -39,6 +40,9 @@ public class Connect {
         capabilities.setCapability("appActivity", ".controller.MainActivity");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);  
+        
+        
+        
 
         //获得屏幕的宽高
         height = driver.manage().window().getSize().height;
@@ -66,7 +70,8 @@ public class Connect {
 			
 //			tc.count_redbag();
 			while(true){
-				tc.get_read_praise();
+//				tc.get_read_praise();
+				tc.get_down_praise();
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
