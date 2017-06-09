@@ -111,12 +111,21 @@ public class TestCases {
 					mm.my_click("//android.widget.TextView[@text='酷划新闻赚']");
 					if(mm.is_exist("//android.widget.Button[@text='确定']")){
 						mm.my_click("//android.widget.Button[@text='确定']");
+						mm.cmd(Cmd.BACK);
 						
 					}else{
 						mm.echo("异常，为找到确定按钮");
 					}
-					
+					//打开后，继续操作
+					mm.my_click(xpath);
 				}
+				//点击安装按钮进行软件安装
+				mm.my_click("//android.widget.Button[@resource-id='com.android.packageinstaller:id/ok_button']");
+				mm.slp(55);
+				
+				
+
+				
 			}
 			
 			String cmd = "adb shell input keyevent 4";
