@@ -102,6 +102,12 @@ public class TestCases {
 				mm.echo("找到‘安装’按钮，点击进行下载");
 				mm.my_click(xpath);
 				mm.slp(5);
+				//容错
+				if(mm.is_exist("//android.widget.TextView[@text='去设置']")){
+					mm.my_click("//android.widget.TextView[@text='去设置']");
+					mm.slp(3);
+					
+				}
 			}
 			
 			String cmd = "adb shell input keyevent 4";

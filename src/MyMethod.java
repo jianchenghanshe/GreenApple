@@ -76,7 +76,7 @@ public class MyMethod {
     }
     //·â×°Ö´ĞĞcmdÃüÁî
     public void cmd(String command){
-    	System.out.println(command);
+    	System.out.println(df.format(new Date())+command);
 
 		try {
 			Runtime.getRuntime().exec(command).waitFor();
