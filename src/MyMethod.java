@@ -104,6 +104,8 @@ public class MyMethod {
     			this.echo("找到元素");
     			break;
     		}
+    		this.my_swipe(0, 0.4);
+    		this.slp(2);
     	}
     	echo("没有找到元素");
     	
