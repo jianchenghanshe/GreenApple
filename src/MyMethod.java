@@ -92,6 +92,7 @@ public class MyMethod {
     //封装点击
     public void my_click(String xpath){
     	driver.findElementByXPath(xpath).click();
+    	slp(1);
     }
     //封装多次查找找一个xpath元素
     public void my_always_search(String xpath,int times){
