@@ -93,6 +93,21 @@ public class MyMethod {
     public void my_click(String xpath){
     	driver.findElementByXPath(xpath).click();
     }
+    //封装多次查找找一个xpath元素
+    public void my_always_search(String xpath,int times){
+    	if(this.is_exist(xpath)) {
+    		this.echo("找到元素");
+    		return;
+    	}
+    	for(int i=times;i>0;i--){
+    		if(this.is_exist(xpath)){
+    			this.echo("找到元素");
+    			break;
+    		}
+    	}
+    	echo("没有找到元素");
+    	
+    }
     
 
 }
