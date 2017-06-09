@@ -68,10 +68,10 @@ public class Connect {
 			Connect con = new Connect();
 			TestCases tc = new TestCases(con);
 			
-//			tc.count_redbag();
+			tc.count_redbag();
 			while(true){
 //				tc.get_read_praise();
-				tc.get_down_praise();
+//				tc.get_down_praise();
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -49,7 +49,7 @@ public class TestCases {
 			}
 			//无论找到与否，都向上滑动0.2距离
 			
-			mm.my_swipe(0, 0.2);
+			mm.my_swipe(0, 0.15);
 			count_swipe++;
 			mm.echo("当前共找到："+count_num+"个奖励;"+"移动了："+count_swipe+"次");
 			
@@ -81,7 +81,7 @@ public class TestCases {
 		}
 		mm.echo("向上滑动0.2屏幕高度");
 		
-		mm.my_swipe(0, 0.2);
+		mm.my_swipe(0, 0.15);
 		mm.slp(2);
 	}
 	//下载类广告奖励领取
@@ -135,7 +135,7 @@ public class TestCases {
 		}
 		mm.echo("向上滑动0.2屏幕高度");
 		
-		mm.my_swipe(0, 0.2);
+		mm.my_swipe(0, 0.15);
 		mm.slp(2);
 	}
 	
