@@ -106,6 +106,15 @@ public class TestCases {
 				if(mm.is_exist("//android.widget.TextView[@text='去设置']")){
 					mm.my_click("//android.widget.TextView[@text='去设置']");
 					mm.slp(3);
+					//找到酷划新闻标识，打开开关
+					mm.my_always_search("//android.widget.TextView[@text='酷划新闻赚']", 3);
+					mm.my_click("//android.widget.TextView[@text='酷划新闻赚']");
+					if(mm.is_exist("//android.widget.Button[@text='确定']")){
+						mm.my_click("//android.widget.Button[@text='确定']");
+						
+					}else{
+						mm.echo("异常，为找到确定按钮");
+					}
 					
 				}
 			}
