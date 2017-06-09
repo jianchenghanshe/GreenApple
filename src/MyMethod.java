@@ -61,8 +61,8 @@ public class MyMethod {
     	}
     }
     //复写方法，可使用原生态滑动方法
-    public void my_swipe(int startX,int startY,int endX,int endY){
-    	driver.swipe(startX,startY,endX,endY,200);
+    public void my_swipe(int startX,int startY,int endX,int endY,int costtime){
+    	driver.swipe(startX,startY,endX,endY,costtime);
     }
     //判断xpath元素是否存在
     public boolean is_exist(String xpath){
@@ -115,6 +115,7 @@ public class MyMethod {
     	echo("没有找到元素");
     	
     }
+
     
 
 }

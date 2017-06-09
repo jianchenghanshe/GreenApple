@@ -1,3 +1,5 @@
+import org.openqa.selenium.Dimension;
+
 import io.appium.java_client.AppiumDriver;
 
 public class TestCases {
@@ -5,6 +7,7 @@ public class TestCases {
 	private Connect con;
 	private AppiumDriver driver;
 	private MyMethod mm;
+
 	public TestCases(Connect con){
 		this.con = con;
 		driver = con.getDriver();
@@ -17,6 +20,17 @@ public class TestCases {
 		
 	}
 	public void count_redbag(){
+		//确定滑动位置
+        Dimension d1 = driver.findElementByXPath("//android.widget.RelativeLayout[@resource-id='com.coohua.xinwenzhuan:id/xlxl_actionbar']").getSize();
+        
+		int startY =  con.getHeight() - d1.height - 1;
+		int startX = 20;
+		Dimension d2 = driver.findElementByXPath("//android.widget.HorizontalScrollView[@resource-id='com.coohua.xinwenzhuan:id/home_tab']").getSize();
+		int endX = 20;
+		int endY = d2.height;
+		Dimension d3 = driver.findElementByXPath("//android.widget.LinearLayout[@resource-id='com.coohua.xinwenzhuan:id/home_feed_tab_parent']").getSize();
+		endY = endY + d3.height + 10;
+
 		mm.echo("资讯页红包数量是否与奖励数量一致");
 		String xpath = "//android.widget.TextView[@resource-id='com.coohua.xinwenzhuan:id/tab_rcmd_redbag_count']";
 		int num = Integer.parseInt(mm.get_el_attr(xpath, "text"));   //当前红包数量，后面用来做判断
@@ -49,7 +63,7 @@ public class TestCases {
 			}
 			//无论找到与否，都向上滑动0.2距离
 			
-			mm.my_swipe(0, 0.15);
+			mm.my_swipe(startX,startY,endX,endY,500);
 			count_swipe++;
 			mm.echo("当前共找到："+count_num+"个奖励;"+"移动了："+count_swipe+"次");
 			
@@ -69,6 +83,18 @@ public class TestCases {
 	
 	//阅读类型广告领取奖励
 	public void get_read_praise(){
+		
+		//确定滑动位置
+        Dimension d = driver.findElementByXPath("//android.widget.RelativeLayout[@resource-id='com.coohua.xinwenzhuan:id/xlxl_actionbar']").getSize();
+        
+		int startY =  con.getHeight() - d.height - 1;
+		int startX = 20;
+		d = driver.findElementByXPath("//android.widget.HorizontalScrollView[@resource-id='com.coohua.xinwenzhuan:id/home_tab']").getSize();
+		int endX = 20;
+		int endY = d.height;
+		d = driver.findElementByXPath("//com.coohua.xinwenzhuan[@resource-id='android.support.v7.app.ActionBar$Tab']").getSize();
+		endY = endY + d.height + 10;
+		
 		String xpath = "//android.widget.TextView[@text='阅读领取']/parent::*";
 		if(mm.is_exist(xpath)){
 			mm.echo("点击含有阅读奖励字样的广告");
@@ -81,7 +107,7 @@ public class TestCases {
 		}
 		mm.echo("向上滑动0.2屏幕高度");
 		
-		mm.my_swipe(0, 0.15);
+		mm.my_swipe(startX,startY,endX,endY,500);
 		mm.slp(2);
 	}
 	//下载类广告奖励领取
@@ -118,6 +144,7 @@ public class TestCases {
 					}
 					//打开后，继续操作
 					mm.my_click(xpath);
+					
 				}
 				//点击安装按钮进行软件安装
 				mm.my_click("//android.widget.Button[@resource-id='com.android.packageinstaller:id/ok_button']");

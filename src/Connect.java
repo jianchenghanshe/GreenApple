@@ -1,8 +1,7 @@
 import java.io.File;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -41,6 +40,7 @@ public class Connect {
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);  
         
+       
         
         
 
@@ -49,6 +49,7 @@ public class Connect {
         width = driver.manage().window().getSize().width;
         System.out.println("启动程序，等待12s");
         Thread.sleep(12000);
+
     }
     
     //提供driver返回函数
