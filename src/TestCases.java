@@ -122,6 +122,11 @@ public class TestCases {
 				mm.echo("找到‘点我下载’按钮，点击进行下载");
 				mm.my_click(xpath);
 				mm.slp(5);
+				deal_err(xpath);
+				//点击安装按钮进行软件安装
+				mm.my_click("//android.widget.Button[@resource-id='com.android.packageinstaller:id/ok_button']");
+				mm.slp(55);
+				
 			}
 			xpath = "//android.widget.TextView[@text='安装']";
 			if(mm.is_exist(xpath)){
@@ -129,30 +134,30 @@ public class TestCases {
 				mm.my_click(xpath);
 				mm.slp(5);
 				//容错
-				if(mm.is_exist("//android.widget.TextView[@text='去设置']")){
-					mm.my_click("//android.widget.TextView[@text='去设置']");
-					mm.slp(3);
-					//找到酷划新闻标识，打开开关
-					mm.my_always_search("//android.widget.TextView[@text='酷划新闻赚']", 3);
-					mm.my_click("//android.widget.TextView[@text='酷划新闻赚']");
-					if(mm.is_exist("//android.widget.Button[@text='确定']")){
-						mm.my_click("//android.widget.Button[@text='确定']");
-						mm.cmd(Cmd.BACK);
-						
-					}else{
-						mm.echo("异常，为找到确定按钮");
-					}
-					//打开后，继续操作
-					mm.my_click(xpath);
-					
-				}
+//				if(mm.is_exist("//android.widget.TextView[@text='去设置']")){
+//					mm.my_click("//android.widget.TextView[@text='去设置']");
+//					mm.slp(3);
+//					//找到酷划新闻标识，打开开关
+//					mm.my_always_search("//android.widget.TextView[@text='酷划新闻赚']", 3);
+//					mm.my_click("//android.widget.TextView[@text='酷划新闻赚']");
+//					if(mm.is_exist("//android.widget.Button[@text='确定']")){
+//						mm.my_click("//android.widget.Button[@text='确定']");
+//						mm.cmd(Cmd.BACK);
+//						
+//					}else{
+//						mm.echo("异常，为找到确定按钮");
+//					}
+//					//打开后，继续操作
+//					mm.my_click(xpath);
+//					
+//				}
+				deal_err(xpath);
 				//点击安装按钮进行软件安装
 				mm.my_click("//android.widget.Button[@resource-id='com.android.packageinstaller:id/ok_button']");
 				mm.slp(55);
-				
+				//检测是否安装成功
 				
 
-				
 			}
 			
 			String cmd = "adb shell input keyevent 4";
@@ -166,6 +171,28 @@ public class TestCases {
 		mm.slp(2);
 	}
 	
-	
-	
+	//下载类游戏，容错封装
+	private void deal_err(String xpath){
+		if(mm.is_exist("//android.widget.TextView[@text='去设置']")){
+			mm.my_click("//android.widget.TextView[@text='去设置']");
+			mm.echo("点击去设置按钮，等待3s");
+			mm.slp(3);
+			//找到酷划新闻标识，打开开关
+			mm.my_always_search("//android.widget.TextView[@text='酷划新闻赚']", 5);
+//			mm.my_click("//android.widget.TextView[@text='酷划新闻赚']");
+			if(mm.is_exist("//android.widget.Button[@resource-id='android:id/button1']")){
+				mm.my_click("//android.widget.Button[@resource-id='android:id/button1']");
+				mm.echo("确定打开开关，等待3s");
+				mm.slp(3);
+				mm.cmd(Cmd.BACK);
+				mm.echo("等待3s后返回安装界面");
+				
+			}else{
+				mm.echo("异常，未找到确定按钮");
+			}
+			//打开后，继续操作
+			mm.my_click(xpath);
+		
+		}
+	}
 }

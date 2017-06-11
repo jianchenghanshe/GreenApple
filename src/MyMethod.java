@@ -96,20 +96,24 @@ public class MyMethod {
     //封装点击
     public void my_click(String xpath){
     	driver.findElementByXPath(xpath).click();
-    	slp(1);
+    	
     }
     //封装多次查找找一个xpath元素
     public void my_always_search(String xpath,int times){
-    	if(this.is_exist(xpath)) {
-    		this.echo("找到元素");
-    		return;
-    	}
+//    	if(this.is_exist(xpath)) {
+//    		this.echo("找到元素");
+//			this.slp(3);
+//			this.my_click(xpath);
+//    		return;
+//    	}
     	for(int i=times;i>0;i--){
     		if(this.is_exist(xpath)){
     			this.echo("找到元素");
-    			break;
+    			this.slp(3);
+    			this.my_click(xpath);
+    			return;
     		}
-    		this.my_swipe(0, 0.4);
+    		this.my_swipe(0, 0.35);
     		this.slp(2);
     	}
     	echo("没有找到元素");
