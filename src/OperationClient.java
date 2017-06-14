@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FileDialog;
 import java.awt.Toolkit;
@@ -6,13 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 public class OperationClient extends JFrame{
@@ -26,6 +30,9 @@ public class OperationClient extends JFrame{
 	JPanel p;
 
 	JToolBar toolbar;
+	JPanel initBar;
+	
+	private JCheckBox reset;
 	
 	static final int WIDTH=600;
 
@@ -43,13 +50,15 @@ public class OperationClient extends JFrame{
 //		 this.setSize(500,350);
 //		 this.setLocation(200,200);
 		 this.setResizable(false);
-		 this.setLayout(null);
+		 this.setLayout(new BorderLayout());
 		 this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		 
 		 JMenuBar menubar1 = new JMenuBar();
-
+		 initBar = new JPanel();
 		 p = new JPanel();
-
+		 p.setLayout(new BorderLayout());
+		 reset = new JCheckBox("重复安装");
+		 
 		 this.setContentPane(p);
 
 		 this.setJMenuBar(menubar1);
@@ -58,15 +67,9 @@ public class OperationClient extends JFrame{
 
 		 JMenu menu2=new JMenu("帮助");
 
-		     JMenu menu3=new JMenu("菜单3");
+	     menubar1.add(menu1);
 
-		     JMenu menu4=new JMenu("菜单4");
-
-		     JMenu menu5=new JMenu("菜单5");
-
-		     menubar1.add(menu1);
-
-		     menubar1.add(menu2);
+	     menubar1.add(menu2);
 
 
 		     item1=new JMenuItem("打开");
@@ -133,11 +136,11 @@ public class OperationClient extends JFrame{
 
 		    
 
-		     JButton button1 = new JButton("工具1");
+		     JButton button1 = new JButton("导入用例");
 
-		     JButton button2 = new JButton("工具2");
+		     JButton button2 = new JButton("初始配置");
 
-		     JButton button3 = new JButton("工具3");
+		     JButton button3 = new JButton("执行用例");
 
 		     toolbar = new JToolBar();
 
@@ -151,7 +154,27 @@ public class OperationClient extends JFrame{
 
 		     p.setLayout(bord);
 		     toolbar.setFloatable(false);
-		     p.add("North",toolbar);    
+		     JTextField userPort = new JTextField(4);
+		     JLabel userPortDesc = new JLabel("端口");
+		     JTextField userTimeout = new JTextField(4);
+		     JLabel userTimeoutDesc = new JLabel("超时时间");
+		     JTextField userDeveId = new JTextField(12);
+		     JLabel userDeveIdDesc = new JLabel("设备序列号");
+		     p.add(toolbar,BorderLayout.NORTH);   
+		     
+		     
+		     initBar.setLayout(new BorderLayout());
+		     
+		     initBar.add(reset,BorderLayout.EAST);
+//		     initBar.add(userPort);
+//		     initBar.add(userPortDesc,userPort);
+//		     initBar.add(userTimeout);
+//		     initBar.add(userTimeoutDesc,userTimeout);
+//		     initBar.add(userDeveId);
+//		     initBar.add(userDeveIdDesc,userDeveId);
+		     initBar.setBackground(new Color(191,191,191));
+		     p.add(initBar,BorderLayout.CENTER);
+		     
 
 		     this.setVisible(true);
 
@@ -176,14 +199,15 @@ public class OperationClient extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					String msg = "89786632@qq.com\n";
+					String msg = "version 1.0\n";
+					msg = msg+"89786632@qq.com\n";
 					msg = msg+"https://github.com/jianchenghanshe/GreenApple\n";
 					JOptionPane.showMessageDialog(OperationClient.this, msg);
 
 				}
 		    	 
 		     });
-		 
+		 //pack();
 		 this.setVisible(true);
 	}
 	

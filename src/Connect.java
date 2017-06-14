@@ -36,7 +36,7 @@ public class Connect {
         capabilities.setCapability("noReset", true); //不需要再次安装
         capabilities.setCapability("appPackage", "com.coohua.xinwenzhuan"); 
 
-        capabilities.setCapability("appActivity", ".controller.MainActivity");
+        capabilities.setCapability("appActivity", "com.coohua.xinwenzhuan.controller.MainActivity");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);  
         
